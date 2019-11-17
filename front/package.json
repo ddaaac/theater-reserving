@@ -11,9 +11,7 @@
     "react-scripts": "3.2.0"
   },
   "scripts": {
-    "start": "npm-run-all --parallel start:**",
-    "start:client": "react-scripts start",
-    "start:server": "node ./server/app.js",
+    "start": "cross-env NODE_PATH=src react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
