@@ -16,22 +16,22 @@ db.once('open', function(){
 mongoose.connect('mongodb://127.0.0.1:27017/ticketing');
 
 // User에 userSchema를 통해 설정한 users collection의 user객체를 할당
-var User = require('./models/users');
+var User = require('./models/users.js');
 
-// Theater에 userSchema를 통해 설정한 theaters collection의 theater객체를 할당
-var Theater = require('./models/theater');
+// Theater에 theaterSchema를 통해 설정한 theaters collection의 theater객체를 할당
+// var Theater = require('./models/theater.js');
 
 // reguest의 body값을 json 형식으로 인코딩
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-var port = process.env.PORT || 3000;
+var port = process.env.PORT || 3001;
 
 // router변수에 routes디렉토리 할당
 var routerUser = require('./routes/indexUser.js')(app, User);
 
 // router변수에 routes디렉토리 할당
-var routerTheater = require('./routes/indexTheater.js')(app, User);
+// var routerTheater = require('./routes/indexTheater.js')(app, Theater);
 
 
 // 3000번 포트로 listen

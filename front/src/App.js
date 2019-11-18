@@ -24,6 +24,7 @@ class App extends React.Component {
           <form>
             <input type="text" value={this.state.name} onChange={this.handleChange}/>
             <input type="button" value="Submit" onClick={this.submit}/>
+            <input type="button" value="create Theater" onClick={this.createTeaterInfo>/>}
             {/*<div> {this.state.name} </div>*/}
           </form>
           <div> {this.state.nameFromExpress} </div>
@@ -43,6 +44,10 @@ class App extends React.Component {
     this.setState({name: ''}); // 초기화
 
   }
+
+  async.createTheaterInfo() {
+
+}
 }
 
 export default App;
