@@ -4,6 +4,7 @@ module.exports = function(app, User)
     app.get('/api/users', function(req,res){
         User.find(function(err, users){
             if(err) return res.status(500).send({error: 'database failure'});
+            console.log(users);
             res.json(users);
         })
     });
@@ -17,10 +18,10 @@ module.exports = function(app, User)
         })
     });
 
-    // phone_number를 key값으로 해서 해당 key값을 가지는 user data return
+    // serial_number를 key값으로 해서 해당 key값을 가지는 user data return
     // 찾은 user들을 return할때 return할 필드 값 설정 가능 0(false), 1(true)
-    app.get('/api/users/phone_number/:phone_number', function(req, res){
-        User.find({phone_number: req.params.phone_number}, {_id: 0, name: 1, register_date: 1},  function(err, users){
+    app.get('/api/users/phone_number/:serial_number', function(req, res){
+        User.find({phone_number: req.params.serial_number}, {_id: 0, name: 1, serial_number: 1, register_date: 1},  function(err, users){
             if(err) return res.status(500).json({error: err});
             if(users.length === 0) return res.status(404).json({error: 'user not found'});
             res.json(users);
@@ -32,6 +33,7 @@ module.exports = function(app, User)
         var user = new User();
         user.name = req.body.name;
         user.phone_number = req.body.phone_number;
+        user.serial_number = req.body.serial_number;
         user.register_date = new Date(req.body.register_date);
 
         user.save(function(err){

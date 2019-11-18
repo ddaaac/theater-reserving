@@ -4,6 +4,7 @@ var Schema = mongoose.Schema;
 var userSchema = new Schema({
     name: String,
     phone_number: Number,
+    serial_number: String,
     register_date: { type: Date, default: Date.now  }
 });
 //users collection의 json 파일들은 userSchema를 따르도록 설정
